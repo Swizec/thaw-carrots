@@ -1,0 +1,30 @@
+{
+    "name": "thaw-carrots",
+    "version": "1.0.0",
+    "description": "Thaw carrots by warming up your laptop to a specific temperature",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Swizec/thaw-carrots.git"
+    },
+    "keywords": [
+        "node",
+        "cpu",
+        "cli",
+        "temperature"
+    ],
+    "author": "Swizec Teller",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Swizec/thaw-carrots/issues"
+    },
+    "homepage": "https://github.com/Swizec/thaw-carrots#readme",
+    "dependencies": {
+        "mri": "^1.1.1",
+        "osx-temperature-sensor": "^1.0.3",
+        "systeminformation": "^3.45.7"
+    }
+}
