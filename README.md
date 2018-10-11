@@ -32,4 +32,4 @@ You get a nice printout showing current temperature.
 
 Enjoy. Never go cold again!
 
-![](https://gifs.com/gif/7LgLw8)
+![](https://j.gifs.com/7LgLw8.gif)
