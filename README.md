@@ -31,3 +31,5 @@ $ thaw-carrots -t 90
 You get a nice printout showing current temperature.
 
 Enjoy. Never go cold again!
+
+![](https://gifs.com/gif/7LgLw8)
