@@ -2,19 +2,8 @@ const si = require("systeminformation");
 const mri = require("mri");
 const sll = require("single-line-log").stdout;
 const kleur = require("kleur");
-
-function collatz_step(n) {
-    return n % 2 ? n / 2 : 3 * n + 1;
-}
-
-function collatz(n) {
-    let count = 0;
-    while (n !== 1) {
-        n = collatz_step(n);
-        count += 1;
-    }
-    return count;
-}
+const isPrime = require("prime-number");
+const eatCPU = require("./eat-cpu");
 
 async function readTemp() {
     const temp = await si.cpuTemperature();
@@ -22,13 +11,23 @@ async function readTemp() {
 }
 
 async function thawMyCarrots(targetTemp) {
-    let temp = await readTemp();
+    let temp = await readTemp(),
+        n = 2;
 
-    for (let n = 1; temp.main < targetTemp; n += 1) {
-        collatz(n);
-        // console.log(`Collatz takes ${collatz(n)} steps for n=${n}`);
+    while (1) {
+        if (temp.main < targetTemp) {
+            eatCPU(n);
+            n = n + 1;
+        }
+
         temp = await readTemp();
-        sll("Current temp", kleur.bold.red(temp.main.toFixed(2)));
+        sll(
+            "Current temp",
+            kleur.bold.red(temp.main.toFixed(2)),
+            "\nCores at",
+            kleur.bold.gray(temp.cores),
+            n
+        );
     }
 }
 

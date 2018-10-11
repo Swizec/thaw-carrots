@@ -26,7 +26,11 @@
         "kleur": "^2.0.2",
         "mri": "^1.1.1",
         "osx-temperature-sensor": "^1.0.3",
+        "prime-number": "^0.2.2",
         "single-line-log": "^1.1.2",
         "systeminformation": "^3.45.7"
+    },
+    "bin": {
+        "thaw-carrots": "index.js"
     }
 }
