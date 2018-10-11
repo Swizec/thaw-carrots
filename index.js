@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const si = require("systeminformation");
 const mri = require("mri");
 const sll = require("single-line-log").stdout;
