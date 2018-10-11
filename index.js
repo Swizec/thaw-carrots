@@ -2,8 +2,7 @@ const si = require("systeminformation");
 const mri = require("mri");
 const sll = require("single-line-log").stdout;
 const kleur = require("kleur");
-const isPrime = require("prime-number");
-const eatCPU = require("./eat-cpu");
+const fork = require("child_process").fork;
 
 async function readTemp() {
     const temp = await si.cpuTemperature();
@@ -12,12 +11,17 @@ async function readTemp() {
 
 async function thawMyCarrots(targetTemp) {
     let temp = await readTemp(),
-        n = 2;
+        children = [];
 
     while (1) {
         if (temp.main < targetTemp) {
-            eatCPU(n);
-            n = n + 1;
+            if (children.length < 10) {
+                children.push(fork("./eat-cpu"));
+            }
+        } else if (temp.main > targetTemp) {
+            if (children.length > 0) {
+                children.pop().kill();
+            }
         }
 
         temp = await readTemp();
@@ -26,7 +30,7 @@ async function thawMyCarrots(targetTemp) {
             kleur.bold.red(temp.main.toFixed(2)),
             "\nCores at",
             kleur.bold.gray(temp.cores),
-            n
+            `\nChildren: ${children.length}`
         );
     }
 }
