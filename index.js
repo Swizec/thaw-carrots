@@ -24,7 +24,7 @@ async function thawMyCarrots(targetTemp) {
     while (1) {
         if (avg(temps) < targetTemp) {
             if (children.length < 10) {
-                children.push(fork("./eat-cpu"));
+                children.push(fork(`${__dirname}/eat-cpu`));
             }
         } else if (avg(temps) > targetTemp) {
             if (children.length > 0) {
