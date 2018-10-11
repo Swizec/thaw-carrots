@@ -1,5 +1,7 @@
 const si = require("systeminformation");
 const mri = require("mri");
+const sll = require("single-line-log").stdout;
+const kleur = require("kleur");
 
 function collatz_step(n) {
     return n % 2 ? n / 2 : 3 * n + 1;
@@ -16,17 +18,17 @@ function collatz(n) {
 
 async function readTemp() {
     const temp = await si.cpuTemperature();
-    return temp.main;
+    return { main: temp.main, cores: temp.cores };
 }
 
 async function thawMyCarrots(targetTemp) {
     let temp = await readTemp();
 
-    console.log(`Warming from ${temp} to ${targetTemp}`);
-
-    for (let n = 1; temp < targetTemp; temp = await readTemp(), n += 1) {
-        console.log("Current temp", temp);
-        console.log(`Collatz takes ${collatz(n)} steps for n=${n}`);
+    for (let n = 1; temp.main < targetTemp; n += 1) {
+        collatz(n);
+        // console.log(`Collatz takes ${collatz(n)} steps for n=${n}`);
+        temp = await readTemp();
+        sll("Current temp", kleur.bold.red(temp.main.toFixed(2)));
     }
 }
 
