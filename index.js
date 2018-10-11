@@ -1,4 +1,5 @@
 const si = require("systeminformation");
+const mri = require("mri");
 
 function collatz_step(n) {
     return n % 2 ? n / 2 : 3 * n + 1;
@@ -18,15 +19,21 @@ async function readTemp() {
     return temp.main;
 }
 
-async function thawMyCarrots() {
+async function thawMyCarrots(targetTemp) {
     let temp = await readTemp();
 
-    console.log(temp);
+    console.log(`Warming from ${temp} to ${targetTemp}`);
 
-    for (let n = 1; temp < 80; temp = await readTemp(), n += 1) {
+    for (let n = 1; temp < targetTemp; temp = await readTemp(), n += 1) {
         console.log("Current temp", temp);
         console.log(`Collatz takes ${collatz(n)} steps for n=${n}`);
     }
 }
 
-thawMyCarrots();
+const args = process.argv.slice(2),
+    targetTemp = mri(args, {
+        alias: { temp: "t" },
+        default: { temp: 85 }
+    });
+
+thawMyCarrots(targetTemp.temp);
