@@ -28,6 +28,7 @@
         "osx-temperature-sensor": "^1.0.3",
         "prime-number": "^0.2.2",
         "single-line-log": "^1.1.2",
+        "sleep": "^5.2.3",
         "systeminformation": "^3.45.7"
     },
     "bin": {
