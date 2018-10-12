@@ -23,6 +23,10 @@ async function thawMyCarrots(targetTemp) {
 
     while (1) {
         if (avg(temps) < targetTemp) {
+            if (children.length >= 10) {
+                // kill oldest child, probably exited
+                children.unshift().kill();
+            }
             if (children.length < 10) {
                 children.push(fork(`${__dirname}/eat-cpu`));
             }
