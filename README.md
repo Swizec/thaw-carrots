@@ -14,7 +14,14 @@ AC too strong? `thaw-carrots`
 
 Cold hands? `thaw-carrots`
 
-## Usage
+## Try it now
+Use npx(comes preinstalled with npm) to try it with no need for installation.
+
+```
+$ npx thaw-carrots -t 90
+```
+
+## Installation
 
 Use npm or yarn to install globally
 
