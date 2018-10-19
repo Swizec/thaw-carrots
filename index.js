@@ -6,6 +6,7 @@ const sll = require("single-line-log").stdout;
 const kleur = require("kleur");
 const fork = require("child_process").fork;
 const sleep = require("sleep");
+const emoji = require('node-emoji')
 
 async function readTemp() {
     const temp = await si.cpuTemperature();
@@ -37,10 +38,9 @@ async function thawMyCarrots(targetTemp) {
         temps.push(temp);
 
         sll(
-            "Current temp",
-            kleur.bold.red(temp.main.toFixed(2)),
-            "\nCores at",
-            kleur.bold.gray(temp.cores),
+            `Thawing carrots 🥕`,
+            `\nCurrent temp: ${kleur.bold.red(temp.main.toFixed(2))} ${temp.main > targetTemp ? emoji.get('fire') : emoji.get('snowflake')}`,
+            `\nCores at ${kleur.bold.gray(temp.cores)}'`,
             `\nChildren: ${children.length}`
         );
         sleep.msleep(500);

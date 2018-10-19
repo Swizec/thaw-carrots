@@ -25,6 +25,7 @@
     "dependencies": {
         "kleur": "^2.0.2",
         "mri": "^1.1.1",
+        "node-emoji": "^1.8.1",
         "osx-temperature-sensor": "^1.0.3",
         "single-line-log": "^1.1.2",
         "sleep": "^5.2.3",
