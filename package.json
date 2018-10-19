@@ -1,6 +1,6 @@
 {
     "name": "thaw-carrots",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Thaw carrots by warming up your laptop to a specific temperature",
     "main": "index.js",
     "scripts": {
@@ -25,6 +25,7 @@
     "dependencies": {
         "kleur": "^2.0.2",
         "mri": "^1.1.1",
+        "node-emoji": "^1.8.1",
         "osx-temperature-sensor": "^1.0.3",
         "single-line-log": "^1.1.2",
         "sleep": "^5.2.3",
