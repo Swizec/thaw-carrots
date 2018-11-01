@@ -33,3 +33,7 @@ You get a nice printout showing current temperature.
 Enjoy. Never go cold again!
 
 ![](https://j.gifs.com/7LgLw8.gif)
+
+## References
+
+[Relevant XKCD](https://xkcd.com/1172/)
